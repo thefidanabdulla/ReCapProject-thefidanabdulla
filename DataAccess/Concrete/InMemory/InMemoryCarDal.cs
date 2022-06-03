@@ -13,11 +13,7 @@ namespace DataAccess.Concrete.InMemory
         List<Car> _cars;
         public InMemoryCarDal()
         {
-            _cars = new List<Car>
-            {
-                new Car{Id = 1, BrandId = 1, ModelYear = 2020, ColorId = "000000", DailyPrice = 100000, Description= "Iyi araba" },
-                new Car{Id = 1, BrandId = 2, ModelYear = 2021, ColorId = "ff0000", DailyPrice = 120000, Description= "Iyi araba" }
-            };
+            _cars = new List<Car> { } ;
         }
         public void Add(Car car)
         {
