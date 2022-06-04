@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -22,26 +23,24 @@ namespace Business.Concrete
         {
             if(car.Description.Length < 2 || car.DailyPrice < 0)
             {
-                Console.WriteLine("The Car name to be added must be a minimum of 2 characters and the daily price must be more than zero!");
-                return new Result(false, "Car could not be added ");
-            }else
-            {
-                Console.WriteLine("The Car added to Database");
-                _carDal.Add(car);
-                return new Result(true, "Car added");
-
+                return new ErrorResult(Messages.CarNameInvalid);
             }
+        
+            _carDal.Add(car);
+
+            return new SuccessResult(Messages.CarAdded);
             
         }
 
-        public void Delete(Car car)
+        public IResult Delete(Car car)
         {
             _carDal.Delete(car);
+            return new SuccessResult(Messages.CarDeleted);
         }
 
-        public List<Car> GetAll()
+        public IDataResult<List<Car>> GetAll()
         {
-            return _carDal.GetAll();
+            return new DataResult(_carDal.GetAll());
         }
 
         public List<CarDetailDto> GetCarDetails()
@@ -59,9 +58,10 @@ namespace Business.Concrete
             return _carDal.GetAll(c => c.ColorId == id);
         }
 
-        public void Update(Car car)
+        public IResult Update(Car car)
         {
             _carDal.Update(car);
+            return new SuccessResult(Messages.CarUpdated);
         }
     }
 }
