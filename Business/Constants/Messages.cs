@@ -11,5 +11,6 @@ namespace Business.Constants
         public static string CarDeleted = "Car deleted from Database";
         public static string CarUpdated = "Car Details Updated";
         public static string CarsListed = "Cars was listed";
+        public static string MaintenanceTime = "System Maintenance...";
     }
 }
