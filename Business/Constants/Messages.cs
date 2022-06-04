@@ -10,5 +10,6 @@ namespace Business.Constants
         public static string CarNameInvalid = "Car name is invalid";
         public static string CarDeleted = "Car deleted from Database";
         public static string CarUpdated = "Car Details Updated";
+        public static string CarsListed = "Cars was listed";
     }
 }

@@ -40,7 +40,12 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-            return new DataResult(_carDal.GetAll());
+            if(DateTime.Now.Hour == 22)
+            {
+                return new ErrorDataResult();
+            }
+
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), true, Messages.CarsListed);
         }
 
         public List<CarDetailDto> GetCarDetails()
