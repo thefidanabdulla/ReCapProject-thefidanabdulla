@@ -1,4 +1,4 @@
-using Business.Abstract;
+﻿using Business.Abstract;
 using Business.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -54,6 +54,8 @@ namespace WebAPI
             }
 
             app.UseHttpsRedirection();
+
+            app.UseStaticFiles();//Bu kod bizim frontend e geçtiğimizde projemizin backend tarafındaki file görüntülenmesi için yazdıldı.
 
             app.UseRouting();
 
