@@ -27,5 +27,7 @@ namespace Business.Constants
         public static string RentalAdded = "New Rental Added";
         public static string RentalDeleted = "Rental deleted from Database";
         public static string RentalUpdated = "Rental Updated";
+
+        public static string AuthorizationDenied = "Authorization Denied";
     }
 }
