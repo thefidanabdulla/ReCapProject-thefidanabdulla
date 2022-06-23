@@ -29,5 +29,11 @@ namespace Business.Constants
         public static string RentalUpdated = "Rental Updated";
 
         public static string AuthorizationDenied = "Authorization Denied";
+        public static string UserRegistered = "User Registered Successfully";
+        public static string UserNotFound = "User Not Found";
+        public static string PasswordError = "Password is wrong";
+        public static string SuccessfulLogin = "Login was successfully";
+        public static string UserAlreadyExists = "User already exists";
+        public static string AccessTokenCreated = "Access Token Created";
     }
 }
