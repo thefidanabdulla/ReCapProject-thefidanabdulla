@@ -33,7 +33,7 @@ namespace Core.CrossCuttinConcerns.Caching.Microsoft
             return _memoryCache.Get(key);
         }
 
-        public bool IsAss(string key)
+        public bool IsAdd(string key)
         {
             return _memoryCache.TryGetValue(key, out _);
         }
