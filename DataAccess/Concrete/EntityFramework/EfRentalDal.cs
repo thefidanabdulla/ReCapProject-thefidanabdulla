@@ -26,12 +26,9 @@ namespace DataAccess.Concrete.EntityFramework
                              on u.Id equals cu.UserId
                              select new RentalDetailDto
                              {
-                                 CarId = ca.Id,
-                                 BrandId = b.Id,
                                  ColorName = co.ColorName,
                                  BrandName = b.BrandName,
                                  ModelName = ca.Description,
-                                 RentalId = re.Id,
                                  RentDate = re.RentDate,
                                  ReturnDate = re.ReturnDate,
                                  CustomerName = u.FirstName,
