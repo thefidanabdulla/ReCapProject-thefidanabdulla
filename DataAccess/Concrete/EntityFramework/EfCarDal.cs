@@ -21,14 +21,19 @@ namespace DataAccess.Concrete.EntityFramework
                 var result = from c in context.Cars
                              join b in context.Brands
                              on c.BrandId equals b.Id
-                             select new CarDetailDto 
+                             join co in context.Colors
+                             on c.ColorId equals co.Id
+
+                             select new CarDetailDto
                              {  Id = c.Id, 
-                                ColorName = c.ColorId,
+                                ColorName = co.ColorName,
                                 BrandName = b.BrandName, 
                                 Description = c.Description, 
                                 ModelYear = c.ModelYear, 
-                                DailyPrice = c.DailyPrice 
+                                DailyPrice = c.DailyPrice,
+                                ImagePath = (from m in context.CarImages where m.CarId == c.Id select m.ImagePath).FirstOrDefault()
                              };
+
                 return result.ToList();
             }
         }
