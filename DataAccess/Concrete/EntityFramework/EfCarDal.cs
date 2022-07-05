@@ -3,14 +3,16 @@ using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework.Context;
 using Entities.Concrete;
 using Entities.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, CarContext>, ICarDal
     {
-        public List<CarDetailDto> GetCarDetails()
+        public List<CarDetailDto> GetCarDetails(Expression<Func<CarDetailDto, bool>> filter = null)
         {
             using (CarContext context = new CarContext())
             {
@@ -21,7 +23,10 @@ namespace DataAccess.Concrete.EntityFramework
                              on c.ColorId equals co.Id
 
                              select new CarDetailDto
-                             {  Id = c.Id, 
+                             {  
+                                CarId = c.Id,
+                                ColorId = co.Id,
+                                BrandId = co.Id,
                                 ColorName = co.ColorName,
                                 BrandName = b.BrandName, 
                                 Description = c.Description, 
@@ -30,7 +35,9 @@ namespace DataAccess.Concrete.EntityFramework
                                 ImagePath = (from m in context.CarImages where m.CarId == c.Id select m.ImagePath).FirstOrDefault()
                              };
 
-                return result.ToList();
+                 return filter == null
+               ? result.ToList()
+               : result.Where(filter).ToList();
             }
         }
     }
