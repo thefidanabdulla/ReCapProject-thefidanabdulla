@@ -24,7 +24,7 @@ namespace DataAccess.Concrete.EntityFramework
 
                              select new CarDetailDto
                              {  
-                                CarId = c.Id,
+                                Id = c.Id,
                                 ColorId = co.Id,
                                 BrandId = co.Id,
                                 ColorName = co.ColorName,
